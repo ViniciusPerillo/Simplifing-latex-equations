@@ -1,0 +1,1 @@
+# Simplifing-latex-equations
