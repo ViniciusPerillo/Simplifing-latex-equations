@@ -19,8 +19,9 @@ equation
     ;
 
 sub_equation
-    : parem (OP parem)* 
+    : parcela (OP parcela)* 
     | div
+    | MOD sub_equation MOD
     ;
 
 div
@@ -33,11 +34,16 @@ parem
     ;
 
 parcela
-    : fator (fator + sub_fator)*
+    : brac_fator (brac_fator + sub_fator)*
     ;
 
 sub_fator
     : (SQRT | POW | SUBIND)+ fator
+    ;
+
+brac_fator
+    : LBRACE fator RBRACE
+    | MOD fator MOD
     ;
 
 fator
@@ -69,7 +75,7 @@ funcao_nao_exp
     | torio
     ;
 
-opfunc 
+funcao_exp 
     : COS  
     | SIN   
     | TAN   
@@ -102,3 +108,4 @@ torio
 
 derivada_parcial
     : DER (POW fator)? LBRACK ICOG(POW fator)? RBRACK fator
+    ;

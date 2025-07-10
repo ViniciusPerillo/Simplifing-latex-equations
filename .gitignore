@@ -1,1 +1,6 @@
 antlr*
+!md*.g4
+md*.interp
+md*.py
+md*.tokens
+__pycache__

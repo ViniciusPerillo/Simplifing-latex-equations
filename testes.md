@@ -34,3 +34,8 @@ $$ F = {k |q_1 q_2| / r^2} $$
 # Equação de Onda:
 
 $$ pder^2[t^2] u = c^2 nabla^2 u $$
+
+# Fórmula de Baskara
+
+$$ (delt) <- sqrt{b^2 - 4ac} $$
+$$ x = {-b +- (delt)/2a} $$

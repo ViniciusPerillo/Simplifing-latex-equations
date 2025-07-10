@@ -26,6 +26,7 @@ mode EQUATION_MODE;
     ATRIB   : '<-' ;
     FAT     : '!' ;
     INF     : 'inf' ;
+    MOD     : '|';
     
     // Functions & Operators
     SQRT  : 'sqrt' ;
@@ -48,7 +49,7 @@ mode EQUATION_MODE;
     D_DIFF: 'd' ;  
     
     // Literals
-    NUM  : [0-9]+ ('.' [0-9]+)? ;
+    NUM  : [0-9]+ (',' [0-9]+)? ;
     ICOG : [a-zA-Z] | 'alpha' | 'beta' | 'gamma' | 'delta' | 'Delta' | 'epsilon' | 'zeta' | 'eta' | 'theta'
        | 'iota' | 'kappa' | 'lambda' | 'mu' | 'nu' | 'xi' | 'pi' | 'rho' | 'sigma' | 'tau'
        | 'upsilon' | 'phi' | 'chi' | 'psi' | 'omega' | 'Omega' | 'nabla' ;          
