@@ -33,17 +33,17 @@ parem
     ;
 
 parcela
-    : (fator_uni)*
+    : fator (fator + sub_fator)*
     ;
 
-fator_uni
-    : (SQRT | COS | SIN | TAN | SEC | CSC | COT | LOG | LN | POW | SUBIND)+ fator
+sub_fator
+    : (SQRT | POW | SUBIND)+ fator
     ;
 
 fator
     : icognita
     | numero
-    | func
+    | funcao
     | IDENT
     | LBRACE sub_equation RBRACE
     ;
@@ -56,11 +56,32 @@ numero
     : '-'? (NUM | INF)
     ;
 
-func
+funcao
+    : funcao_nao_exp
+    | funcao_exp (POW fator)? fator
+    | derivada_parcial
+    ;
+
+funcao_nao_exp
     : limite
     | integral
     | derivada
     | torio
+    ;
+
+opfunc 
+    : COS  
+    | SIN   
+    | TAN   
+    | SEC   
+    | CSC   
+    | COT   
+    | log   
+    | LN 
+    ;
+
+log
+    : LOG LBRACK fator RBRACK
     ;
 
 limite
@@ -68,13 +89,16 @@ limite
     ;
 
 integral
-    : INT LBRACK (sub_equation VIRGULA sub_equation)? RBRACK fator D_DIFF ICOG
+    : INT LBRACK (sub_equation TO sub_equation)? RBRACK fator D_DIFF ICOG
     ;
 
 derivada
-    : (DER | PDER) LBRACK ICOG RBRACK fator
+    : DER LBRACK ICOG RBRACK fator
     ;
 
 torio
-    : (PROD | SUM) LBRACK (sub_equation (VIRGULA sub_equation)?)? RBRACK fator
+    : (PROD | SUM) LBRACK ((equation TO)? sub_equation)? RBRACK fator
     ;
+
+derivada_parcial
+    : DER (POW fator)? LBRACK ICOG(POW fator)? RBRACK fator

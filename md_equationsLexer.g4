@@ -22,6 +22,7 @@ mode EQUATION_MODE;
     OP      : '+' | MINUS | '*' | DIV ;
     VIRGULA : ';' ;
     TENDER  : '->' ;
+    ATE     : 'to';
     ATRIB   : '<-' ;
     FAT     : '!' ;
     INF     : 'inf' ;
@@ -50,5 +51,5 @@ mode EQUATION_MODE;
     NUM  : [0-9]+ ('.' [0-9]+)? ;
     ICOG : [a-zA-Z] | 'alpha' | 'beta' | 'gamma' | 'delta' | 'Delta' | 'epsilon' | 'zeta' | 'eta' | 'theta'
        | 'iota' | 'kappa' | 'lambda' | 'mu' | 'nu' | 'xi' | 'pi' | 'rho' | 'sigma' | 'tau'
-       | 'upsilon' | 'phi' | 'chi' | 'psi' | 'omega' | 'Omega' | 'nabla';          
+       | 'upsilon' | 'phi' | 'chi' | 'psi' | 'omega' | 'Omega' | 'nabla' ;          
     IDENT: [a-zA-Z_][a-zA-Z0-9_]* ; 
