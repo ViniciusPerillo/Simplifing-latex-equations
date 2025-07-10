@@ -7,7 +7,7 @@ TEXT_CONTENT   : ~[$]+ ;
 mode EQUATION_MODE;
     CLOSE_DOLLAR : '$$' -> popMode;
     WS           : [ \t\n\r]+ -> skip;
-    COMMENT      : '<!--' .*? '-->' -> skip;
+    COMMENT      : '<!--' .*? '>' -> skip;
     
     // Brackets & Operators
     LBRACK  : '[' ;
@@ -53,4 +53,4 @@ mode EQUATION_MODE;
     ICOG : [a-zA-Z] | 'alpha' | 'beta' | 'gamma' | 'delta' | 'Delta' | 'epsilon' | 'zeta' | 'eta' | 'theta'
        | 'iota' | 'kappa' | 'lambda' | 'mu' | 'nu' | 'xi' | 'pi' | 'rho' | 'sigma' | 'tau'
        | 'upsilon' | 'phi' | 'chi' | 'psi' | 'omega' | 'Omega' | 'nabla' ;          
-    IDENT: [a-zA-Z_][a-zA-Z0-9_]* ; 
+    IDENT: '('[a-zA-Z_][a-zA-Z0-9_]* ')' ; 

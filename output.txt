@@ -120,6 +120,8 @@
 <'n',ICOG>
 <'->',TENDER>
 <'inf',INF>
+<'t',ICOG>
+<'y',ICOG>
 <']',RBRACK>
 <'(',LPAREN>
 <'1',NUM>
@@ -153,21 +155,16 @@
 <'x',ICOG>
 <']',RBRACK>
 <'f',ICOG>
-<'(',LPAREN>
-<'x',ICOG>
-<')',RPAREN>
+<'(x)',IDENT>
 <'}',RBRACE>
-<'dx',IDENT>
+<'d',D_DIFF>
+<'x',ICOG>
 <'=',COMP>
 <'f',ICOG>
-<'(',LPAREN>
-<'b',ICOG>
-<')',RPAREN>
+<'(b)',IDENT>
 <'-',MINUS>
 <'f',ICOG>
-<'(',LPAREN>
-<'a',ICOG>
-<')',RPAREN>
+<'(a)',IDENT>
 <'$$',CLOSE_DOLLAR>
 <'
 
@@ -192,8 +189,12 @@
 <'{',LBRACE>
 <'k',ICOG>
 <'|',MOD>
-<'q_1',IDENT>
-<'q_2',IDENT>
+<'q',ICOG>
+<'_',SUBIND>
+<'1',NUM>
+<'q',ICOG>
+<'_',SUBIND>
+<'2',NUM>
 <'|',MOD>
 <'/',DIV>
 <'r',ICOG>
@@ -231,9 +232,7 @@
 
 ',TEXT_CONTENT>
 <'$$',OPEN_DOLLAR>
-<'(',LPAREN>
-<'delt',IDENT>
-<')',RPAREN>
+<'(delt)',IDENT>
 <'<-',ATRIB>
 <'sqrt',SQRT>
 <'{',LBRACE>
@@ -242,7 +241,8 @@
 <'2',NUM>
 <'-',MINUS>
 <'4',NUM>
-<'ac',IDENT>
+<'a',ICOG>
+<'c',ICOG>
 <'}',RBRACE>
 <'$$',CLOSE_DOLLAR>
 <'
@@ -254,11 +254,10 @@
 <'-',MINUS>
 <'b',ICOG>
 <'+-',COMP>
-<'(',LPAREN>
-<'delt',IDENT>
-<')',RPAREN>
+<'(delt)',IDENT>
 <'/',DIV>
 <'2',NUM>
 <'a',ICOG>
 <'}',RBRACE>
-<'$$',CLOSE_DOLLAR>
+Linha 42: comentario nao fechada
+Fim da compilacao

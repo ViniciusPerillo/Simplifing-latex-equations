@@ -17,7 +17,7 @@ $$ prod[i=1 to n] i = n! $$
 # Limite Notável
 
 $$ lim[x->0] { {sin x/x} } = 1 $$
-$$ lim[n->inf] (1 + {1/n})^n = e $$
+$$ lim[n->infty] (1 + {1/n})^n = e $$
 
 # Teorema Fundamental do Calculo
 
@@ -38,4 +38,14 @@ $$ pder^2[t^2] u = c^2 nabla^2 u $$
 # Fórmula de Baskara
 
 $$ (delt) <- sqrt{b^2 - 4ac} $$
-$$ x = {-b +- (delt)/2a} $$
+$$ x = {-b +- (delt)/2a} 
+<!--
+a
+a
+a
+a
+a
+$$
+
+
+

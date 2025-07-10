@@ -3,8 +3,10 @@ import sys
 from antlr4.error.ErrorListener import ErrorListener
 from antlr4 import *
 from Lexer import LexerError
+from Parser import ParserError
 
 from md_equationsLexer import md_equationsLexer
+from md_equationsParser import md_equationsParser
 
 
 def main(argv):
@@ -21,9 +23,9 @@ def main(argv):
 
         token_stream = CommonTokenStream(lexer)
         # Listener Parser
-        # parser = JanderParser(token_stream)
-        # parser.removeErrorListeners()
-        # parser.addErrorListener(JanderParserError(out))
+        parser = md_equationsParser(token_stream)
+        parser.removeErrorListeners()
+        parser.addErrorListener(ParserError(out))
 
         while token.type != Token.EOF:
             nome_token = md_equationsLexer.symbolicNames[token.type]

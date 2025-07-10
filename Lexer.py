@@ -14,7 +14,6 @@ class LexerError(ErrorListener):
         self.out = output
     
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        print(msg)
         if '\\n' in msg or '\\r' in msg:
             if '{' in msg:
                 print(f'Linha {line}: chaves não fechadas', file= self.out)
@@ -26,5 +25,4 @@ class LexerError(ErrorListener):
             symbol = re.search(r"'(.*?)'", msg).group(1)
             print(f'Linha {line}: {symbol} - simbolo nao identificado', flush= True, file= self.out)
 
-        
         print("Fim da compilacao", file=self.out)
