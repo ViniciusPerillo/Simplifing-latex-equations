@@ -19,47 +19,47 @@ equation
     ;
 
 sub_equation
-    : parcela (OP parcela)* 
-    | div
+    : parcela (operator parcela)* 
+    ;
+
+operator
+    : PLUS_MINUS
+    | PLUS
+    | MINUS
+    | MUL
+    | DIV
+    ;
+
+sub_equation_brac
+    : LPAREN sub_equation RPAREN
     | MOD sub_equation MOD
+    ;
+
+parcela
+    : (sub_fator)+
+    ;
+
+sub_fator
+    : (SQRT | POW | SUBIND) apply_func
+    | fator FAT
+    | MINUS? fator
+    ;
+
+fator
+    : ICOG
+    | numero
+    | div
+    | funcao
+    | sub_equation_brac
+    | IDENT
+    ;
+
+numero
+    : NUM | INF 
     ;
 
 div
     : LBRACE sub_equation DIV sub_equation RBRACE
-    ;
-
-parem
-    : LPAREN sub_equation RPAREN 
-    | parcela
-    ;
-
-parcela
-    : brac_fator (brac_fator + sub_fator)*
-    ;
-
-sub_fator
-    : (SQRT | POW | SUBIND)+ fator
-    ;
-
-brac_fator
-    : LBRACE fator RBRACE
-    | MOD fator MOD
-    ;
-
-fator
-    : icognita
-    | numero
-    | funcao
-    | IDENT
-    | LBRACE sub_equation RBRACE
-    ;
-
-icognita
-    : '-'? ICOG
-    ;
-
-numero
-    : '-'? (NUM | INF)
     ;
 
 funcao
@@ -87,25 +87,30 @@ funcao_exp
     ;
 
 log
-    : LOG LBRACK fator RBRACK
+    : LOG (LBRACK apply_func RBRACK)?
     ;
 
 limite
-    : LIM LBRACK ICOG TENDER numero RBRACK fator
+    : LIM LBRACK ICOG TENDER numero RBRACK apply_func
     ;
 
 integral
-    : INT LBRACK (sub_equation TO sub_equation)? RBRACK fator D_DIFF ICOG
+    : INT (LBRACK sub_equation ATE sub_equation RBRACK)? apply_func D_DIFF ICOG
     ;
 
 derivada
-    : DER LBRACK ICOG RBRACK fator
+    : DER LBRACK ICOG RBRACK apply_func
     ;
 
 torio
-    : (PROD | SUM) LBRACK ((equation TO)? sub_equation)? RBRACK fator
+    : (PROD | SUM) (LBRACK (equation ATE)? sub_equation RBRACK)? apply_func
     ;
 
 derivada_parcial
-    : DER (POW fator)? LBRACK ICOG(POW fator)? RBRACK fator
+    : PDER (POW fator)? LBRACK ICOG(POW fator)? RBRACK apply_func
+    ;
+
+apply_func
+    : fator
+    | LBRACE sub_equation RBRACE
     ;

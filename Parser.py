@@ -21,5 +21,7 @@ class ParserError(ErrorListener):
         # Trata o erro específico de EOF
         if 'EOF' in msg:
             print(f'Linha {line}: erro sintatico proximo a EOF', flush= True, file= self.out)
+        elif 'inft' in msg:
+            print(f'Linha {line}: Você não quis dizer inf?', flush= True, file= self.out)
         else:
             print(f'Linha {line}: erro sintatico proximo a {offendingSymbol.text}', flush= True, file= self.out)

@@ -1,6 +1,4 @@
-from io import StringIO
 import sys
-from antlr4.error.ErrorListener import ErrorListener
 from antlr4 import *
 from Lexer import LexerError
 from Parser import ParserError
@@ -27,12 +25,8 @@ def main(argv):
         parser.removeErrorListeners()
         parser.addErrorListener(ParserError(out))
 
-        while token.type != Token.EOF:
-            nome_token = md_equationsLexer.symbolicNames[token.type]
-            # Tratamento do print do token no formato adequado
-            print(f"<'{token.text}',{nome_token}>", file= out)
+        parser.document()
 
-            token = lexer.nextToken()
 
 if __name__ == '__main__':
     main(sys.argv)
