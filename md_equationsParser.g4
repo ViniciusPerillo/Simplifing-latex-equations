@@ -103,7 +103,7 @@ derivada
     ;
 
 torio
-    : (PROD | SUM) (LBRACK (equation ATE)? sub_equation RBRACK)? apply_func
+    : (PROD | SUM) (LBRACK equation (ATE sub_equation)? RBRACK)? apply_func
     ;
 
 derivada_parcial
