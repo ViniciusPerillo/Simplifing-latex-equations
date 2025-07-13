@@ -66,7 +66,6 @@ Este projeto converte expressões matemáticas em notação simplificada (ex: `r
 >  python3 -m pip install antlr4-python3-runtime
 
 2. Gere os arquivos `md_equationsLexer.py` e `md_equationsParser.py`:
-   ```bash
 > antlr4 -Dlanguage=Python3 md_equationsLexer.g4
 > antlr4 -Dlanguage=Python3 md_equationsParser.g4
 
