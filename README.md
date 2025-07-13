@@ -71,10 +71,14 @@ Este projeto converte expressões matemáticas em notação simplificada (ex: `r
 
 3. Execute: 
 > python main.py casos_de_teste/entrada/teste_1.txt saida.tex
+
 para transformar o modelo na nossa linguagem para LateX.
 
 4. Execute: 
 > pip install pdf2image
+
 ou
+
 > sudo apt-get install poppler-utils
-para o Linux
+
+para o Linux para transformar na imagem gerada pelo LateX.
