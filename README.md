@@ -62,8 +62,20 @@ Este projeto converte expressões matemáticas em notação simplificada (ex: `r
 - `README.md`: instruções.
 
 ## Como usar
+1. Baixe o antlr e coloque na pasta com a Gramática e execute o comando:
+>  python3 -m pip install antlr4-python3-runtime
 
-1. Gere os arquivos `md_equationsLexer.py` e `md_equationsParser.py`:
+2. Gere os arquivos `md_equationsLexer.py` e `md_equationsParser.py`:
    ```bash
-   antlr4 -Dlanguage=Python3 md_equationsLexer.g4
-   antlr4 -Dlanguage=Python3 md_equationsParser.g4
+> antlr4 -Dlanguage=Python3 md_equationsLexer.g4
+> antlr4 -Dlanguage=Python3 md_equationsParser.g4
+
+3. Execute: 
+> python main.py casos_de_teste/entrada/teste_1.txt saida.tex
+para transformar o modelo na nossa linguagem para LateX.
+
+4. Execute: 
+> pip install pdf2image
+ou
+> sudo apt-get install poppler-utils
+para o Linux
