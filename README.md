@@ -10,10 +10,6 @@
 
 Este projeto converte expressões matemáticas em notação simplificada (ex: `raiz{x}`, `lim[x->0]`, `int[a to b]{f x dx}`) para expressões válidas em **LaTeX** (ex: `\sqrt{x}`, `\lim_{x \to 0}`, `\int_{a}^{b} f x\,dx`).
 
-Tabela completa:
-
-## Tabela de Conversões: Pseudoexpressões Matemáticas → LaTeX
-
 ## Tabela de Conversões: Pseudoexpressões Matemáticas → LaTeX
 
 | Nome                    | Entrada (Pseudo)                               | Saída (LaTeX)                                                                 |
