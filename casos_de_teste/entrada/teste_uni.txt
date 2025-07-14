@@ -1,0 +1,4 @@
+$$ 
+    @delt <- sqrt{b^2 - 4ac} 
+    x = {-b +- @delt/2a}    
+$$
