@@ -7,17 +7,39 @@ from antlr4.error.ErrorListener import ErrorListener
 import sys
 import re
 
+
 class ConverterVisitor(ParseTreeVisitor):
 
     def __init__(self):
         super().__init__()
         self.vars = {}
+        self.errors = []
 
-    def visitDocument(self, ctx:md_equationsParser.DocumentContext):
-        parts = []
-        for ch in ctx.children:
-            parts.append(self.visit(ch))
-        return ''.join(filter(None, parts))
+    def visitDocument(self, ctx: md_equationsParser.DocumentContext):
+        # Primeira passada: processa e armazena variáveis
+        for child in ctx.children:
+            if isinstance(child, md_equationsParser.EquationBlockContext):
+                if child.IDENT() and child.ATRIB():
+                    self.visitEquationBlock(child)  # Apenas armazena
+
+        # Segunda passada: processa expressões finais
+        output = []
+        for child in ctx.children:
+            if isinstance(child, md_equationsParser.EquationBlockContext):
+                if not (child.IDENT() and child.ATRIB()):
+                    output.append(self.visitEquationBlock(child))
+                    output.append('\n\n')
+            else:
+                    output.append(None)
+
+        latex = ''.join(filter(None, output))
+
+        if self.errors:
+            msgs = '\n'.join(self.errors)
+            return f"Erros: \n{msgs}\n\n{latex}"
+        else:
+            return latex
+
 
     def visitBlock(self, ctx):
         return ''.join([t.getText() for t in ctx.children])
@@ -28,17 +50,14 @@ class ConverterVisitor(ParseTreeVisitor):
             var_name = ctx.IDENT().getText()
             expr = self.visit(ctx.equation())
 
-            print(f"Declarando variável {var_name} com valor: {expr}")
             if var_name in self.vars:
-                raise Exception(f"Variável {var_name} já declarada")
+                self.errors.append(f"Variável {var_name} já declarada")
             self.vars[var_name] = expr
-            print(f"Estado atual das variáveis: {self.vars}")
-            return ''  # para não imprimir nada no lugar da declaração
+            return f"Variável {var_name} já declarada"
 
         else:
             eq = self.visit(ctx.equation())
-            print(f"Expressão sem declaração: {eq}")
-            return f'${eq}$'
+            return f'$${eq}$$'
 
 
     def visitEquation(self, ctx):
@@ -132,12 +151,10 @@ class ConverterVisitor(ParseTreeVisitor):
         if ctx.IDENT():
                 name = ctx.IDENT().getText()
                 if name.startswith('@'):
-                    print(f"Usando variável {name}, vars={self.vars}")
                     if name not in self.vars:
-                        print(f"Variável {name} não declarada")
-                        return ''  # ou raise Exception aqui
+                        self.errors.append(f"Variável {name} não declarada")
+                        return f"<ERRO: {name} não declarado>"
                     valor = self.vars[name]
-                    print(f"Valor encontrado para {name}: {valor}")
                     return valor
                 return name
         return ''
@@ -155,18 +172,18 @@ class ConverterVisitor(ParseTreeVisitor):
     
 
     def visitFuncao(self, ctx):
-        if ctx.funcao_nao_exp():
-            return self.visit(ctx.funcao_nao_exp())
-
         if ctx.derivada_parcial():
             return self.visit(ctx.derivada_parcial())
+        
+        if ctx.funcao_nao_exp():
+            return self.visit(ctx.funcao_nao_exp())
 
         if ctx.funcao_exp():
             nome = self.visit(ctx.funcao_exp())
 
             expoente = ''
             if ctx.POW():
-                expoente = f'^{{{self.visit(ctx.fator(0))}}}'
+                expoente = f'^{{{self.visit(ctx.fator())}}}'
 
             argumento = self.visit(ctx.apply_func())
             return f'\\{nome}{expoente} {argumento}'
@@ -211,8 +228,9 @@ class ConverterVisitor(ParseTreeVisitor):
 
     def visitDerivada(self, ctx):
         var = ctx.ICOG().getText()
-        expr = self.visit(ctx.apply_func())  
+        expr = self.visit(ctx.apply_func())
         return rf'\frac{{d{expr}}}{{d{var}}}'
+
 
     def visitDerivada_parcial(self, ctx):
         expoente_pder = ''
@@ -253,8 +271,13 @@ class ConverterVisitor(ParseTreeVisitor):
 
     def visitApply_func(self, ctx):
         if ctx.fator():
-            return self.visit(ctx.fator())        
-        return '{' + self.visit(ctx.sub_equation()) + '}'
+            return self.visit(ctx.fator())
+        
+        inner = self.visit(ctx.sub_equation())
+        if inner.startswith('\\left(') and inner.endswith('\\right)'):
+            return inner 
+        return f'({inner})'
+
 
 
     # padrão fallback

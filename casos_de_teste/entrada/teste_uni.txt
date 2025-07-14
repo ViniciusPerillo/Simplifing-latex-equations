@@ -1,4 +1,1 @@
-$$ 
-    @delt <- sqrt{b^2 - 4ac} 
-    x = {-b +- @delt/2a}    
-$$
+$$ int[a to b] {der[x] f(x)} dx = f(b) - f(a) $$
