@@ -12,45 +12,28 @@ Este projeto converte expressões matemáticas em notação simplificada (ex: `r
 
 ## Tabela de Conversões: Pseudoexpressões Matemáticas → LaTeX
 
-| Nome                    | Entrada (Pseudo)                               | Saída (LaTeX)                                                                 |
-|-------------------------|------------------------------------------------|--------------------------------------------------------------------------------|
-| Raiz quadrada           | raiz{a}                                        | \sqrt{a}                                                                       |
-| Fração                  | {a}/{b}                                        | \frac{a}{b}                                                                    |
-| Casos                   | case[x>0; x<0]{x}{-x}                          | \begin{cases} x, & \text{se } x \ge 0 \\ -x, & \text{se } x < 0 \end{cases}   |
-| Limite                  | lim[x->0]                                      | \lim_{x \to 0}                                                                 |
-| Funções trigonométricas| sin, cos, tan                                  | \sin, \cos, \tan                                                               |
-| Integral definida       | int[a; b]{fx dx}                               | \int_{a}^{b} fx \, dx                                                          |
-| Somatório infinito      | sum[n=1 to inf]{1}/{n^2}                       | \sum_{n=1}^{\infty} \frac{1}{n^2}                                              |
-| Derivada                | der[x]{f}                                      | \dfrac{df}{dx}                                                                 |
-| Derivada parcial        | pder[x]{f}                                     | \dfrac{\partial f}{\partial x}                                                 |
-| Binomial                | binom[a; b]                                    | \binom{a}{b}                                                                   |
-| Fatorial                | fat{a}                                         | a!                                                                             |
-| União                   | union[A; B]                                    | A \cup B                                                                       |
-| Interseção              | inter[A; B]                                    | A \cap B                                                                       |
-| Exibição total          | display{...}                                   | \displaystyle                                                                  |
-| Fatorial de soma        | (a+b)!                                         | (a + b)!                                                                       |
-| Limite com infinito     | lim[x -> inf](1 + {1}/{x})^x                   | \lim_{x \to \infty} \left(1 + \frac{1}{x} \right)^x                            |
-| Bhaskara simplificado   | x = {-b +- raiz(b^2 - 4ac)}/{2a}               | x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}                                         |
-| Integral até x          | int[-inf to x]{f(t) dt}                        | \int_{-\infty}^{x} f(t) \, dt                                                  |
-| Covariância             | Cov(X, Y) = E[(X - {mu_X})(Y - {mu_Y})]        | \text{Cov}(X, Y) = E[(X - \mu_X)(Y - \mu_Y)]                                   |
-| União simplificada      | A u B                                          | A \cup B                                                                       |
-| Interseção simplificada | A n B                                          | A \cap B                                                                       |
-| Diferença de conjuntos  | A \ B                                          | A \setminus B                                                                  |
-| Inclusão de conjuntos   | N {c} Z {c} Q {c} R                            | \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}           |
-| Quantificador universal | for all x in R: x^2 >= 0                       | \forall x \in \mathbb{R},\ x^2 \ge 0                                           |
-| Quantificador existencial| exists x in R: x^2 = 2                        | \exists x \in \mathbb{R} \mid x^2 = 2                                          |
-| Lógica (negação)        | not (P and Q) = not P or not Q                | \neg (P \land Q) \equiv \neg P \lor \neg Q                                    |
-| Implicação lógica       | p => q                                         | p \Rightarrow q                                                                |
-| Matriz 2x2              | [[1, 2], [3, 4]]                               | \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}                                   |
-| Vetor                   | v = <x, y, z>                                  | \vec{v} = \langle x, y, z \rangle                                              |
-| Inversa de matriz       | inv(A) = {1}/{det(A)} * adj(A)                 | A^{-1} = \frac{1}{\det(A)} \cdot \text{adj}(A)                                 |
-| Determinante 2x2        | det([[a, b], [c, d]]) = ad - bc                | \det \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad - bc                   |
-| Produto interno         | <u, v> = sum[i=1 to n] u_i * v_i               | \langle \vec{u}, \vec{v} \rangle = \sum_{i=1}^n u_i v_i                        |
-| Produto escalar         | <a, b> = norm(a) * norm(b) * cos{theta}        | \vec{a} \cdot \vec{b} = |\vec{a}||\vec{b|\cos(\theta)                          |
-| Produto vetorial        | cross(a, b)                                    | \vec{a} \times \vec{b}                                                         |
-| Transposta de matriz    | transpose(A)                                   | A^T                                                                            |
-
-> ⚠️ Notação como `fat{a}`, `union[A; B]`, `display{}` são pseudo-funções da linguagem customizada e devem ser convertidas conforme a coluna “Saída (LaTeX)”.
+| Nome                         | Função/Expressão (entrada)                                                                                                 | LaTeX esperado (saída)                                                                                           |
+|------------------------------|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| Binômio de Newton            | `$$ (a+b)(c-e) = a^2 + b^2 $$`                                                                                             | `\displaystyle (a+b)(c-e) = a^{2} + b^{2}`                                                                      |
+| Identidade Trigonométrica     | `$$ sin^2theta + cos^2theta = 1 $$`                                                                                        | `\sin^{2} \theta + \cos^{2} \theta = 1`                                                                          |
+| Série Aritmética             | `$$ sum[i=1 to n] i = {n(n+1)/2} $$`                                                                                       | `\sum_{i=1}^{n} i = \frac{n (n+1)}{2}`                                                                            |
+| Série Fatorial               | `$$ prod[i=1 to n] i = n! $$`                                                                                              | `\prod_{i=1}^{n} i = n!`                                                                                          |
+| Limite Notável 1             | `$$ lim[x->0]{{sin x/x}} = 1 $$`                                                                                           | `\lim_{x \to 0} \frac{\sin x}{x} = 1`                                                                             |
+| Limite Notável 2             | `$$ lim[n->inf]{(1 + {1/n})^n} = e $$`                                                                                      | `\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^{n} = e`                                                       |
+| Teorema Fundamental do Cálculo| `$$ int[a to b] {der[x] f(x)} dx = f(b) - f(a) $$`                                                                         | `\int_{a}^{b} \frac{d f(x)}{dx} \, dx = f(b) - f(a)`                                                             |
+| Entropia de Boltzmann        | `$$ S = k log W $$`                                                                                                        | `S = k \log W`                                                                                                    |
+| Lei de Coulomb               | `$$ F = {k |q_1 q_2| / r^2} $$`                                                                                            | `F = \frac{k |q_1 q_2|}{r^{2}}`                                                                                   |
+| Equação de Onda              | `$$ pder^2[t^2] u = c^2 nabla^2 u $$`                                                                                      | `\frac{\partial^{2} u}{\partial t^{2}} = c^{2} \nabla^{2} u`                                                     |
+| Fórmula de Bhaskara          | `$$ @delt <- sqrt{b^2 - 4ac} $$`                                                                                          | `\delta \leftarrow \sqrt{b^{2} - 4 a c}`                                                                          |
+|                              | `$$ x = {-b +- @delt/2a} $$`                                                                                              | `x = \frac{-b \pm \delta}{2 a}`                                                                                   |
+| Correlação de Pearson        | `$$ rho = {nsum{xy} - sum{x}sum{y}/sqrt{(sum{x^2} - (sumx)^2)(sumy^2 - (sumy)^2)}} $$`                                       | `\rho = \frac{\mathrm{nsum} (x y) - \sum x \sum y}{\sqrt{\left(\sum x^{2} - (\sum x)^{2}\right)\left(\sum y^{2} - (\sum y)^{2}\right)}}` |
+| Expressão extra 1            | `$$ @int <- e^x $$`                                                                                                        | `\text{@int} \leftarrow e^{x}`                                                                                     |
+| Integral com variável definida| `$$ int[a to b] {@int} dx = @int $$`                                                                                       | `\int_{a}^{b} \text{@int} \, dx = \text{@int}`                                                                    |
+| Outra expressão Lei de Coulomb| `$$ F = {k |q_1 q_2| / r^2} $$`                                                                                            | `F = \frac{k |q_1 q_2|}{r^{2}}`                                                                                   |
+| Variável Delta com raiz       | `$$ @delt <- sqrt{b^2 - 4ac} $$`                                                                                          | `\delta \leftarrow \sqrt{b^{2} - 4 a c}`                                                                          |
+| Fórmula Bhaskara com delta    | `$$ x = {-b +- @delt/2a} $$`                                                                                              | `x = \frac{-b \pm \delta}{2 a}`                                                                                   |
+| Fórmula Bhaskara com delta typo| `$$ x = {-b +- @delta/2a} $$`                                                                                             | `x = \frac{-b \pm \text{@delta}}{2 a}`                                                                             |
+| Correlação de Pearson (repetida) | `$$ rho = {nsum{xy} - sum{x}sum{y}/sqrt{(sum{x^2} - (sumx)^2)(sumy^2 - (sumy)^2)}} $$`                                     | `\rho = \frac{\mathrm{nsum} (x y) - \sum x \sum y}{\sqrt{\left(\sum x^{2} - (\sum x)^{2}\right)\left(\sum y^{2} - (\sum y)^{2}\right)}}` |
 
 
 ## Arquivos principais
