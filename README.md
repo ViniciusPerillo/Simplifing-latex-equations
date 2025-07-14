@@ -80,5 +80,3 @@ para transformar o modelo na nossa linguagem para LateX.
 ou
 
 > sudo apt-get install poppler-utils
-
-para o Linux para transformar na imagem gerada pelo LateX.

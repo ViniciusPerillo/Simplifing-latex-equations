@@ -17,11 +17,15 @@ $$ \prod_{i=1}^n i = n! $$
 # Limite Notável
 
 $$ \lim_{x \to 0}\frac{sin x}{x} = 1 $$
-$$ \lim_{n \to \infty}{(1 + \fract{1}{n})^n} = e $$
+$$ \lim_{n \to \infty}{(1 + \frac{1}{n})^n} = e $$
 
 # Teorema Fundamental do Calculo
 
 $$ \int_a^b \frac{df(x)}{dx} dx = f(b) - f(a) $$
+
+não consegui fazer, ficou:
+
+$\int_{a}^{b} {\frac{df}{dx}(x)} \, dx=f(b)-f(a)$
 
 # Entropia de Boltzmann
 
@@ -33,11 +37,11 @@ $$ F = \frac{k |q_1 q_2|}{r^2} $$
 
 # Equação de Onda:
 
-$$ \fract{\partial^2u}{\partialt^2} = c^2 \nabla^2 u $$
+$$ \frac{\partial^2u}{\partialt^2} = c^2 \nabla^2 u $$
 
 # Fórmula de Baskara
 
-$$ x = {-b +- sqrt{b^2 - 4ac}/2a} $$
+$$x=\frac{-b\pm \sqrt{b^2-4\cdot a\cdot c}}{2\cdot a}$$
 
 # Correlação de Pearson
 

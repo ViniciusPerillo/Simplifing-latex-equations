@@ -64,7 +64,7 @@ div
 
 funcao
     : funcao_nao_exp
-    | funcao_exp (POW fator)? fator
+    | funcao_exp (POW fator)? apply_func
     | derivada_parcial
     ;
 

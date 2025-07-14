@@ -1,0 +1,30 @@
+$$ (a+b)(c-e) = a^2 + b^2 $$
+
+$$ sin^2theta + cos^2theta = 1 $$
+
+$$ sum[i=1 to n] i = {n(n+1)/2} $$
+
+$$ prod[i=1 to n] i = n! $$
+
+$$ lim[x->0]{{sin x/x}} = 1 $$
+$$ lim[n->inf]{(1 + {1/n})^n} = e $$
+
+$$ @int <- e^x $$
+
+$$ @int <- e^x $$
+
+$$ int[a to b] {@int} dx = @int $$
+
+$$ S = k log W $$
+
+$$ F = {k |q_1 q_2| / r^2} $$
+
+$$ pder^2[t^2] u = c^2 nabla^2 u $$
+
+$$ @delt <- sqrt{b^2 - 4ac} $$
+
+$$ x = {-b +- @delt/2a}  $$
+
+$$ x = {-b +- @delta/2a}  $$
+
+$$ rho = {nsum{xy} - sum{x}sum{y}/sqrt{(sum{x^2} - (sumx)^2)(sumy^2 - (sumy)^2)}} $$
