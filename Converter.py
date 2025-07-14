@@ -252,7 +252,7 @@ class ConverterVisitor(ParseTreeVisitor):
         var_com_expoente = var + expoente_var
         argumento = self.visit(ctx.apply_func())
 
-        return rf'\frac{{\partial{expoente_pder} {argumento}}}{{\partial{var_com_expoente}}}'
+        return rf'\frac{{\partial {expoente_pder} {argumento}}}{{\partial {var_com_expoente}}}'
 
 
 
