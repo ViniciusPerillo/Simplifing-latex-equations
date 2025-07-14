@@ -1,2 +1,0 @@
-Linha 1: colchetes não fechadas
-Fim da compilacao

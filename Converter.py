@@ -4,6 +4,7 @@ from md_equationsLexer import md_equationsLexer
 from antlr4 import *
 from antlr4.error.ErrorListener import ErrorListener
 
+from io import StringIO
 import sys
 import re
 
@@ -36,7 +37,7 @@ class ConverterVisitor(ParseTreeVisitor):
 
         if self.errors:
             msgs = '\n'.join(self.errors)
-            return f"Erros: \n{msgs}\n\n{latex}"
+            return f"Erros de variáveis:\n{msgs}\n\n{latex}"
         else:
             return latex
 
@@ -51,7 +52,8 @@ class ConverterVisitor(ParseTreeVisitor):
             expr = self.visit(ctx.equation())
 
             if var_name in self.vars:
-                self.errors.append(f"Variável {var_name} já declarada")
+                line = ctx.IDENT().getSymbol().line
+                self.errors.append(f"Linha {line}: Variável {var_name} já declarada")
             self.vars[var_name] = expr
             return f"Variável {var_name} já declarada"
 
@@ -152,7 +154,8 @@ class ConverterVisitor(ParseTreeVisitor):
                 name = ctx.IDENT().getText()
                 if name.startswith('@'):
                     if name not in self.vars:
-                        self.errors.append(f"Variável {name} não declarada")
+                        line = ctx.IDENT().getSymbol().line
+                        self.errors.append(f"Linha {line}: Variável {name} não declarada")
                         return f"<ERRO: {name} não declarado>"
                     valor = self.vars[name]
                     return valor

@@ -1,1 +1,0 @@
-$$ int[a to b] {der[x] f(x)} dx = f(b) - f(a) $$
