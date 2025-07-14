@@ -4,3 +4,4 @@ md*.interp
 md*.py
 md*.tokens
 __pycache__
+output.txt
