@@ -31,12 +31,6 @@ $$\lim_{n \to \infty} (\left(1+\frac{1}{n}\right)^n)=e$$
 
 
 
-# Teorema Fundamental do Calculo
-
-$$\int_{a}^{b} (\frac{df}{dx}\left(x\right)) \, dx=f\left(b\right)-f\left(a\right)$$
-
-
-
 # Entropia de Boltzmann
 
 $$S=k\log W$$

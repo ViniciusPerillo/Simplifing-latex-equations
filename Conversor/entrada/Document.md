@@ -19,10 +19,6 @@ $$ prod[i=1 to n] i = n! $$
 $$ lim[x->0]{{sin x/x}} = 1 $$
 $$ lim[n->inf]{(1 + {1/n})^n} = e $$
 
-# Teorema Fundamental do Calculo
-
-$$ int[a to b] {der[x] f(x)} dx = f(b) - f(a) $$
-
 # Entropia de Boltzmann
 
 $$ S = k log W $$

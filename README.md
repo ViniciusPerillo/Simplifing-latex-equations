@@ -53,9 +53,13 @@ Este projeto converte expressões matemáticas em notação simplificada (ex: `r
 > antlr4 -Dlanguage=Python3 md_equationsParser.g4
 
 3. Execute: 
-> python main.py casos_de_teste/entrada/teste_1.txt saida.tex
+> python main.py teste.txt saida.tex
 
 para transformar o modelo na nossa linguagem para LateX.
+
+Ou para converter arquivos .md em massa:
+
+> python main2.py Conversor/entrada Conversor/saida
 
 4. Execute: 
 > pip install pdf2image
