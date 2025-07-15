@@ -30,14 +30,15 @@ class ConverterVisitor(ParseTreeVisitor):
                 if not (child.IDENT() and child.ATRIB()):
                     output.append(self.visitEquationBlock(child))
                     output.append('\n\n')
-            else:
-                    output.append(None)
+
+            elif isinstance(child, md_equationsParser.BlockContext):
+                    output.append(child.getText())
 
         latex = ''.join(filter(None, output))
 
         if self.errors:
             msgs = '\n'.join(self.errors)
-            return f"Erros de variáveis:\n{msgs}\n\n{latex}"
+            return f"Erros de variáveis:\n\n{msgs}\n\n{latex}"
         else:
             return latex
 

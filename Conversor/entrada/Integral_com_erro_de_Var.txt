@@ -1,3 +1,5 @@
+# Integral com erro de Variável
+
 $$ @int <- e^x $$
 
 $$ @int <- e^x $$
