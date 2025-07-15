@@ -47,7 +47,7 @@ def main(argv):
     if os.path.isdir(input_path) and os.path.isdir(output_path):
         # Entrada e saída são pastas: processa todos arquivos .txt da pasta entrada
         for filename in os.listdir(input_path):
-            if filename.endswith('.txt'):
+            if filename.endswith('.md'):
                 input_file = os.path.join(input_path, filename)
                 base_name = os.path.splitext(filename)[0]
                 output_file = os.path.join(output_path, f"{base_name}.md")
