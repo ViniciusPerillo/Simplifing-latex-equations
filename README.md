@@ -21,7 +21,6 @@ Este projeto converte expressões matemáticas em notação simplificada (ex: `r
 | Limite Notável (1)            | $$ lim[x->0]{{sin x/x}} = 1 $$                                                              | $$\lim_{x \to 0} (\frac{\sin x}{x})=1$$                              |
 | Limite Notável (2)            | $$ lim[n->inf]{(1 + {1/n})^n} = e $$                                                        | $$\lim_{n \to \infty} (\left(1+\frac{1}{n}\right)^n)=e$$            |
 | Entropia de Boltzmann         | $$ S = k log W $$                                                                           | $$S=k\log W$$                                                        |
-| Lei de Coulomb                | $$ F = {k |q_1 q_2| / r^2} $$                                                                | $$F=\frac{k\left|q_{1}q_{2}\right|}{r^2}$$                           |
 | Equação de Onda               | $$ pder^2[t^2] u = c^2 nabla^2 u $$                                                         | $$\frac{\partial ^{2} u}{\partial t^{2}}=c^2\nabla^2u$$             |
 | Fórmula de Bhaskara           | $$ @delt <- sqrt{b^2 - 4ac} $$ <br> $$ x = {-b +- @delt/2a} $$                              | $$x=\frac{-b\pm \sqrt{(b^2-4ac)}}{2a}$$                              |
 | Correlação de Pearson         | $$ rho = {nsum{xy} - sum{x}sum{y}/sqrt{(sum{x^2} - (sumx)^2)(sumy^2 - (sumy)^2)}} $$        | $$\rho=\frac{n\sum (xy)-\sum (x)\sum (y)}{\sqrt{\left(\sum (x^2)-\left(\sum x\right)^2\right)\left(\sum y^2-\left(\sum y\right)^2\right)}}$$ |
