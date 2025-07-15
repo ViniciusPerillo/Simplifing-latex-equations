@@ -37,10 +37,8 @@ $$ pder^2[t^2] u = c^2 nabla^2 u $$
 
 # Fórmula de Baskara
 
-$$ 
-    @delt <- sqrt{b^2 - 4ac} 
-    x = {-b +- @delt/2a}    
-$$
+$$ @delt <- sqrt{b^2 - 4ac} $$
+$$ x = {-b +- @delt/2a}    $$
 
 # Correlação de Pearson
 
