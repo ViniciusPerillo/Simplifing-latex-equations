@@ -8,7 +8,13 @@
 
 ## Descrição
 
-Este projeto converte expressões matemáticas em notação simplificada (ex: `raiz{x}`, `lim[x->0]`, `int[a to b]{f x dx}`) para expressões válidas em **LaTeX** (ex: `\sqrt{x}`, `\lim_{x \to 0}`, `\int_{a}^{b} f x\,dx`).
+Este projeto converte expressões matemáticas em notação simplificada (ex: `raiz{x}`, `lim[x->0]`, `int[a to b]{f x dx}`) para expressões válidas em **LaTeX** (ex: `\sqrt{x}`, `\lim_{x \to 0}`, `\int_{a}^{b} f x\,dx`). Além de conseguir capturar todo o texto de documentos Markdown, convertendo apenas as Pseudoexpressões, ele também é capaz de:
+
+- Capturar e converter variáveis (denominadas com @, ex: @Variavel <- `raiz{x}`) e inserí-las posteriormente;
+
+- Retornar erros relacionados a variáveis, sem parar o conversor;
+
+- Retornar erros sintáticos, como palavras erradas e falta de fechamento de chaves, parêntesis e colcetes, parando o conversor.
 
 ## Tabela de Conversões (alguns exemplos): Pseudoexpressões Matemáticas → LaTeX
 
